@@ -1,0 +1,319 @@
+/* ===========================================================
+   KS3 Maths Practice — shared styles
+   Theme: the squared maths exercise book
+   =========================================================== */
+
+:root{
+  --paper:#FBFAF4;
+  --paper-2:#F3EFE6;
+  --grid:#DBE6F1;        /* light squared-paper blue */
+  --grid-bold:#C7D6E8;
+  --ink:#19242F;
+  --ink-soft:#586675;
+  --rule:#E5DFD1;
+  --brand:#2D54D6;       /* home accent: ink-pen blue */
+
+  --y7:#138B82;          /* teal */
+  --y8:#CE8324;          /* amber */
+  --y9:#C0436F;          /* magenta */
+
+  --accent:var(--brand); /* overridden per page */
+
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, sans-serif;
+  --hand:"Caveat", cursive;
+
+  --maxw:1040px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{ -webkit-text-size-adjust:100% }
+
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background-color:var(--paper);
+  /* squared paper drawn with gradients — no images, fully portable */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px);
+  background-size:
+    28px 28px,
+    28px 28px,
+    140px 140px,
+    140px 140px;
+  background-position:-1px -1px, -1px -1px, -1px -1px, -1px -1px;
+  min-height:100vh;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:clamp(20px,5vw,56px) clamp(18px,5vw,32px) 64px;
+}
+
+a{ color:inherit; text-decoration:none }
+
+/* ---------- exercise-book label (home hero) ---------- */
+.book-label{
+  position:relative;
+  background:var(--paper);
+  border:2px solid var(--ink);
+  border-radius:4px;
+  padding:clamp(20px,4vw,34px) clamp(20px,4vw,40px);
+  box-shadow:6px 7px 0 rgba(25,36,47,.14);
+  max-width:680px;
+}
+.book-label::before{
+  /* tape corner, like a sticker on a book cover */
+  content:"";
+  position:absolute;
+  top:-12px; left:28px;
+  width:74px; height:22px;
+  background:rgba(45,84,214,.16);
+  border:1px dashed rgba(45,84,214,.45);
+  transform:rotate(-3deg);
+}
+.book-label .eyebrow{
+  font-family:var(--body);
+  font-weight:600;
+  font-size:.74rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.book-label h1{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(2.6rem,9vw,4.6rem);
+  line-height:.96;
+  letter-spacing:-.02em;
+  margin:.14em 0 .12em;
+}
+.book-label .sub{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:clamp(1rem,3.2vw,1.3rem);
+  color:var(--brand);
+}
+.name-line{
+  display:flex; align-items:flex-end; gap:10px;
+  margin-top:22px;
+  font-weight:500; color:var(--ink-soft);
+  font-size:.95rem;
+}
+.name-line .fill{
+  flex:1;
+  border-bottom:2px solid var(--rule);
+  height:1.1em;
+  max-width:280px;
+}
+
+/* ---------- section headings ---------- */
+.lead{
+  margin:clamp(34px,6vw,52px) 0 18px;
+  display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;
+}
+.lead h2{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:clamp(1.3rem,4vw,1.7rem);
+  letter-spacing:-.01em;
+}
+.hand{
+  font-family:var(--hand);
+  font-weight:700;
+  color:var(--brand);
+  font-size:1.5rem;
+  transform:rotate(-4deg);
+  white-space:nowrap;
+}
+
+/* ---------- year cards (home) ---------- */
+.years{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(14px,2.4vw,22px);
+}
+.year-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:208px;
+  background:var(--paper);
+  border:2px solid var(--ink);
+  border-radius:8px;
+  padding:22px 22px 18px;
+  box-shadow:5px 6px 0 var(--card-shadow, rgba(25,36,47,.16));
+  transition:transform .16s ease, box-shadow .16s ease;
+  overflow:hidden;
+}
+.year-card::after{
+  /* coloured tab in the corner, like a topic divider */
+  content:"";
+  position:absolute;
+  top:0; right:0;
+  width:0; height:0;
+  border-style:solid;
+  border-width:0 56px 56px 0;
+  border-color:transparent var(--c) transparent transparent;
+}
+.year-card .num{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(3.4rem,10vw,4.6rem);
+  line-height:.9;
+  letter-spacing:-.03em;
+  color:var(--c);
+}
+.year-card .word{
+  font-family:var(--display);
+  font-weight:700;
+  font-size:1.35rem;
+  margin-top:2px;
+}
+.year-card .go{
+  display:inline-flex; align-items:center; gap:8px;
+  font-weight:600; font-size:.95rem;
+  color:var(--ink-soft);
+  margin-top:14px;
+}
+.year-card .go .arrow{ transition:transform .16s ease }
+
+.year-card.y7{ --c:var(--y7) }
+.year-card.y8{ --c:var(--y8) }
+.year-card.y9{ --c:var(--y9) }
+
+.year-card:hover,
+.year-card:focus-visible{
+  transform:translate(-3px,-3px);
+  box-shadow:8px 10px 0 var(--c);
+  outline:none;
+}
+.year-card:hover .go,
+.year-card:focus-visible .go{ color:var(--c) }
+.year-card:hover .go .arrow,
+.year-card:focus-visible .go .arrow{ transform:translateX(5px) }
+
+/* ---------- back link ---------- */
+.back{
+  display:inline-flex; align-items:center; gap:8px;
+  font-weight:600; font-size:.92rem;
+  color:var(--ink-soft);
+  margin-bottom:26px;
+}
+.back:hover,.back:focus-visible{ color:var(--accent); outline:none }
+
+/* ---------- year page header ---------- */
+.page-head{
+  border-left:6px solid var(--accent);
+  padding-left:18px;
+  margin-bottom:8px;
+}
+.page-head .eyebrow{
+  font-weight:600; font-size:.74rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+.page-head h1{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(2.2rem,8vw,3.4rem);
+  line-height:1;
+  letter-spacing:-.02em;
+}
+.page-head h1 .yr{ color:var(--accent) }
+.intro{ color:var(--ink-soft); max-width:560px; margin:14px 0 4px }
+
+/* ---------- quiz grid ---------- */
+.quiz-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px,1fr));
+  gap:clamp(12px,2vw,18px);
+  margin-top:clamp(26px,5vw,38px);
+}
+.quiz-card{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  background:var(--paper);
+  border:2px solid var(--ink);
+  border-radius:8px;
+  padding:18px 18px 16px;
+  box-shadow:4px 5px 0 rgba(25,36,47,.14);
+  transition:transform .16s ease, box-shadow .16s ease;
+}
+.quiz-card .topic{
+  font-weight:600; font-size:.72rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent);
+}
+.quiz-card .title{
+  font-family:var(--display);
+  font-weight:700; font-size:1.18rem; line-height:1.15;
+}
+.quiz-card .meta{ font-size:.86rem; color:var(--ink-soft); margin-top:2px }
+.quiz-card .open{
+  margin-top:auto; padding-top:12px;
+  display:inline-flex; align-items:center; gap:7px;
+  font-weight:600; font-size:.9rem; color:var(--accent);
+}
+.quiz-card .open .arrow{ transition:transform .16s ease }
+.quiz-card:hover,
+.quiz-card:focus-visible{
+  transform:translate(-3px,-3px);
+  box-shadow:7px 9px 0 var(--accent);
+  outline:none;
+}
+.quiz-card:hover .open .arrow,
+.quiz-card:focus-visible .open .arrow{ transform:translateX(4px) }
+
+/* empty state */
+.empty{
+  margin-top:clamp(26px,5vw,38px);
+  border:2px dashed var(--grid-bold);
+  border-radius:8px;
+  padding:clamp(26px,5vw,40px);
+  text-align:center;
+  background:rgba(255,255,255,.5);
+}
+.empty .h{
+  font-family:var(--display);
+  font-weight:700; font-size:1.25rem; margin-bottom:6px;
+}
+.empty p{ color:var(--ink-soft) }
+
+/* ---------- footer ---------- */
+.foot{
+  margin-top:clamp(46px,8vw,72px);
+  padding-top:20px;
+  border-top:2px solid var(--rule);
+  font-size:.84rem; color:var(--ink-soft);
+  display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+}
+
+/* ---------- load animation ---------- */
+@keyframes rise{
+  from{ opacity:0; transform:translateY(14px) }
+  to{ opacity:1; transform:translateY(0) }
+}
+.rise{ animation:rise .5s ease both }
+.rise.d1{ animation-delay:.06s }
+.rise.d2{ animation-delay:.12s }
+.rise.d3{ animation-delay:.18s }
+
+/* ---------- responsive ---------- */
+@media (max-width:680px){
+  .years{ grid-template-columns:1fr }
+  .year-card{ min-height:150px; flex-direction:row; align-items:center; justify-content:flex-start; gap:18px }
+  .year-card .num{ font-size:3.2rem }
+  .year-card .body-col{ display:flex; flex-direction:column }
+  .foot{ flex-direction:column; gap:6px }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; transition:none !important }
+}
