@@ -6,98 +6,76 @@
 <title>Year 8 — Multiplying &amp; Dividing Negatives</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FBFAF4; --grid:#DBE6F1; --grid-bold:#C7D6E8;
-    --ink:#19242F; --ink-soft:#586675; --rule:#E5DFD1;
-    --accent:#CE8324;         /* Year 8 amber */
-    --correct:#138B82;        /* teal */
-    --wrong:#C0436F;          /* magenta */
-    --display:"Bricolage Grotesque", system-ui, sans-serif;
-    --body:"Inter", system-ui, -apple-system, sans-serif;
+    --bg:#F5F6F9; --surface:#FFFFFF; --ink:#0F172A; --muted:#647084; --line:#E6E9EF;
+    --accent:#0D9488;          /* Year 8 teal */
+    --correct:#0D9488; --wrong:#DB2777;
+    --radius:18px;
+    --shadow:0 1px 2px rgba(15,23,42,.04), 0 10px 30px rgba(15,23,42,.06);
+    --font:"Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:var(--body); color:var(--ink); background-color:var(--paper);
-    background-image:
-      linear-gradient(var(--grid) 1px,transparent 1px),
-      linear-gradient(90deg,var(--grid) 1px,transparent 1px),
-      linear-gradient(var(--grid-bold) 1px,transparent 1px),
-      linear-gradient(90deg,var(--grid-bold) 1px,transparent 1px);
-    background-size:28px 28px,28px 28px,140px 140px,140px 140px;
-    background-position:-1px -1px;
-    min-height:100vh; line-height:1.5; -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:680px; margin:0 auto; padding:clamp(18px,5vw,44px) clamp(16px,5vw,28px) 56px}
+  body{font-family:var(--font);color:var(--ink);background:var(--bg);min-height:100vh;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:640px;margin:0 auto;padding:clamp(24px,5vw,52px) clamp(18px,5vw,28px) 64px}
   a{color:inherit;text-decoration:none}
-  .back{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;color:var(--ink-soft);margin-bottom:22px}
+  .back{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem;color:var(--muted);margin-bottom:24px}
   .back:hover,.back:focus-visible{color:var(--accent);outline:none}
 
-  .head{border-left:6px solid var(--accent);padding-left:16px;margin-bottom:20px}
-  .head .eyebrow{font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
-  .head h1{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,6vw,2.3rem);line-height:1.05;letter-spacing:-.02em}
+  .head{margin-bottom:24px}
+  .head .eyebrow{font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .head h1{font-weight:800;font-size:clamp(1.7rem,6vw,2.4rem);line-height:1.05;letter-spacing:-.02em}
 
-  /* progress */
-  .progress-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px;font-size:.85rem;color:var(--ink-soft);font-weight:600}
-  .bar{height:8px;background:#EAE5D8;border-radius:99px;overflow:hidden;margin-bottom:24px;border:1px solid var(--rule)}
-  .bar > i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
+  .progress-row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px;font-size:.85rem;color:var(--muted);font-weight:600}
+  .bar{height:8px;background:#E9ECF1;border-radius:99px;overflow:hidden;margin-bottom:24px}
+  .bar > i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease;border-radius:99px}
 
-  /* card */
-  .card{background:var(--paper);border:2px solid var(--ink);border-radius:10px;padding:clamp(20px,4vw,30px);box-shadow:5px 6px 0 rgba(25,36,47,.14)}
-  .qnum{font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-  .question{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,7vw,2.6rem);letter-spacing:-.01em;margin-bottom:22px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(22px,4vw,32px);box-shadow:var(--shadow)}
+  .qnum{font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .question{font-weight:800;font-size:clamp(2rem,8vw,2.8rem);letter-spacing:-.02em;margin-bottom:24px}
 
   .options{display:grid;gap:10px}
   .opt{
     display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
-    font-family:var(--body);font-size:1.15rem;font-weight:600;color:var(--ink);
-    background:#fff;border:2px solid var(--ink);border-radius:8px;padding:14px 16px;
-    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    font-family:var(--font);font-size:1.12rem;font-weight:600;color:var(--ink);
+    background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:15px 16px;
+    transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
   }
-  .opt .key{
-    flex:none;width:30px;height:30px;display:grid;place-items:center;border-radius:6px;
-    background:#F1ECDE;border:1.5px solid var(--rule);font-size:.85rem;font-weight:700;color:var(--ink-soft)
-  }
-  .opt:not(:disabled):hover{transform:translate(-2px,-2px);box-shadow:4px 5px 0 var(--accent)}
+  .opt .key{flex:none;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:#EEF1F5;font-size:.85rem;font-weight:700;color:var(--muted)}
+  .opt:not(:disabled):hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line));box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 16%,transparent);transform:translateY(-2px)}
   .opt:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
   .opt:disabled{cursor:default}
-  .opt.correct{background:rgba(19,139,130,.12);border-color:var(--correct)}
-  .opt.correct .key{background:var(--correct);color:#fff;border-color:var(--correct)}
-  .opt.wrong{background:rgba(192,67,111,.10);border-color:var(--wrong)}
-  .opt.wrong .key{background:var(--wrong);color:#fff;border-color:var(--wrong)}
-  .opt.dim{opacity:.5}
+  .opt.correct{background:color-mix(in srgb,var(--correct) 10%,#fff);border-color:var(--correct)}
+  .opt.correct .key{background:var(--correct);color:#fff}
+  .opt.wrong{background:color-mix(in srgb,var(--wrong) 8%,#fff);border-color:var(--wrong)}
+  .opt.wrong .key{background:var(--wrong);color:#fff}
+  .opt.dim{opacity:.45}
 
-  .feedback{margin-top:18px;border-top:2px solid var(--rule);padding-top:16px;display:none}
+  .feedback{margin-top:18px;border-top:1px solid var(--line);padding-top:16px;display:none}
   .feedback.show{display:block;animation:fade .25s ease both}
-  .feedback .verdict{font-family:var(--display);font-weight:700;font-size:1.1rem;margin-bottom:4px}
+  .feedback .verdict{font-weight:800;font-size:1.05rem;margin-bottom:4px}
   .feedback .verdict.right{color:var(--correct)}
   .feedback .verdict.nope{color:var(--wrong)}
-  .feedback .why{color:var(--ink-soft);font-size:.97rem}
+  .feedback .why{color:var(--muted);font-size:.97rem;font-weight:500}
 
-  .next{
-    margin-top:18px;display:none;width:100%;cursor:pointer;
-    font-family:var(--display);font-weight:700;font-size:1.05rem;color:#fff;
-    background:var(--ink);border:2px solid var(--ink);border-radius:8px;padding:13px 18px;
-    transition:transform .12s ease, box-shadow .12s ease;
-  }
+  .next{margin-top:18px;display:none;width:100%;cursor:pointer;font-family:var(--font);font-weight:700;font-size:1.02rem;color:#fff;background:var(--ink);border:none;border-radius:12px;padding:14px 18px;transition:transform .12s ease, box-shadow .12s ease}
   .next.show{display:block}
-  .next:hover{transform:translate(-2px,-2px);box-shadow:4px 5px 0 var(--accent)}
+  .next:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(15,23,42,.18)}
   .next:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
-  /* results */
   .result{text-align:center;display:none}
   .result.show{display:block;animation:fade .3s ease both}
-  .result .score-num{font-family:var(--display);font-weight:800;font-size:clamp(3.4rem,14vw,5rem);line-height:1;color:var(--accent);letter-spacing:-.03em}
-  .result .score-num span{color:var(--ink-soft);font-size:.4em}
-  .result .msg{font-family:var(--display);font-weight:700;font-size:1.3rem;margin:8px 0 6px}
-  .result .best{color:var(--ink-soft);font-size:.95rem;margin-bottom:24px}
+  .result .score-num{font-weight:800;font-size:clamp(3.4rem,14vw,5rem);line-height:1;color:var(--accent);letter-spacing:-.03em}
+  .result .score-num span{color:var(--muted);font-size:.4em}
+  .result .msg{font-weight:800;font-size:1.3rem;margin:8px 0 6px}
+  .result .best{color:var(--muted);font-size:.95rem;margin-bottom:24px;font-weight:500}
   .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1rem;border-radius:8px;padding:13px 22px;border:2px solid var(--ink);transition:transform .12s ease, box-shadow .12s ease}
-  .btn:hover{transform:translate(-2px,-2px);box-shadow:4px 5px 0 var(--accent)}
+  .btn{cursor:pointer;font-family:var(--font);font-weight:700;font-size:1rem;border-radius:12px;padding:13px 22px;border:1.5px solid var(--line);transition:transform .12s ease, box-shadow .12s ease}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(15,23,42,.12)}
   .btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-  .btn.primary{background:var(--accent);color:#fff}
-  .btn.ghost{background:#fff;color:var(--ink)}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .btn.ghost{background:var(--surface);color:var(--ink)}
 
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
@@ -113,7 +91,6 @@
     <h1>Multiplying &amp; Dividing Negatives</h1>
   </header>
 
-  <!-- QUIZ -->
   <div id="quiz">
     <div class="progress-row">
       <span id="counter">Question 1 of 10</span>
@@ -135,7 +112,6 @@
     </div>
   </div>
 
-  <!-- RESULTS -->
   <div class="card result" id="result">
     <div class="score-num"><span id="finalScore">0</span><span>/10</span></div>
     <p class="msg" id="resultMsg"></p>
@@ -151,149 +127,70 @@
 <script>
 (function(){
   "use strict";
-
   var QUESTIONS = [
-    { q:"-6 × 4",            answer:"-24", options:["-24","24","-2","10"],
-      why:"A negative times a positive is negative. 6 × 4 = 24, so -24." },
-    { q:"-7 × -3",           answer:"21",  options:["21","-21","-10","-4"],
-      why:"Negative times negative is positive. 7 × 3 = 21." },
-    { q:"-20 ÷ 5",           answer:"-4",  options:["-4","4","-15","-100"],
-      why:"Negative ÷ positive is negative. 20 ÷ 5 = 4, so -4." },
-    { q:"-36 ÷ -9",          answer:"4",   options:["4","-4","-45","27"],
-      why:"Negative ÷ negative is positive. 36 ÷ 9 = 4." },
-    { q:"8 × -5",            answer:"-40", options:["-40","40","-3","13"],
-      why:"Positive times negative is negative. 8 × 5 = 40, so -40." },
-    { q:"-9 × -6",           answer:"54",  options:["54","-54","-15","15"],
-      why:"Two negatives make a positive. 9 × 6 = 54." },
-    { q:"48 ÷ -8",           answer:"-6",  options:["-6","6","-40","56"],
-      why:"Positive ÷ negative is negative. 48 ÷ 8 = 6, so -6." },
-    { q:"-7 × 7",            answer:"-49", options:["-49","49","0","-14"],
-      why:"Negative times positive is negative. 7 × 7 = 49, so -49." },
-    { q:"-56 ÷ -7",          answer:"8",   options:["8","-8","-49","63"],
-      why:"Negative ÷ negative is positive. 56 ÷ 7 = 8." },
-    { q:"-3 × -4 × -2",      answer:"-24", options:["-24","24","-9","9"],
-      why:"Three negative signs give a negative answer. 3 × 4 × 2 = 24, so -24." }
+    { q:"-6 × 4", answer:"-24", options:["-24","24","-2","10"], why:"A negative times a positive is negative. 6 × 4 = 24, so -24." },
+    { q:"-7 × -3", answer:"21", options:["21","-21","-10","-4"], why:"Negative times negative is positive. 7 × 3 = 21." },
+    { q:"-20 ÷ 5", answer:"-4", options:["-4","4","-15","-100"], why:"Negative ÷ positive is negative. 20 ÷ 5 = 4, so -4." },
+    { q:"-36 ÷ -9", answer:"4", options:["4","-4","-45","27"], why:"Negative ÷ negative is positive. 36 ÷ 9 = 4." },
+    { q:"8 × -5", answer:"-40", options:["-40","40","-3","13"], why:"Positive times negative is negative. 8 × 5 = 40, so -40." },
+    { q:"-9 × -6", answer:"54", options:["54","-54","-15","15"], why:"Two negatives make a positive. 9 × 6 = 54." },
+    { q:"48 ÷ -8", answer:"-6", options:["-6","6","-40","56"], why:"Positive ÷ negative is negative. 48 ÷ 8 = 6, so -6." },
+    { q:"-7 × 7", answer:"-49", options:["-49","49","0","-14"], why:"Negative times positive is negative. 7 × 7 = 49, so -49." },
+    { q:"-56 ÷ -7", answer:"8", options:["8","-8","-49","63"], why:"Negative ÷ negative is positive. 56 ÷ 7 = 8." },
+    { q:"-3 × -4 × -2", answer:"-24", options:["-24","24","-9","9"], why:"Three negative signs give a negative answer. 3 × 4 × 2 = 24, so -24." }
   ];
-
   var KEYS = ["A","B","C","D"];
   var STORE_KEY = "y8-negatives-best";
-
-  var order = [], idx = 0, score = 0, locked = false;
-
-  var el = {
-    quiz: document.getElementById("quiz"),
-    counter: document.getElementById("counter"),
-    running: document.getElementById("runningScore"),
-    bar: document.getElementById("barFill"),
-    qnum: document.getElementById("qnum"),
-    question: document.getElementById("question"),
-    options: document.getElementById("options"),
-    feedback: document.getElementById("feedback"),
-    verdict: document.getElementById("verdict"),
-    why: document.getElementById("why"),
-    next: document.getElementById("nextBtn"),
-    result: document.getElementById("result"),
-    finalScore: document.getElementById("finalScore"),
-    resultMsg: document.getElementById("resultMsg"),
-    bestLine: document.getElementById("bestLine"),
-    again: document.getElementById("againBtn")
-  };
-
-  function shuffle(a){
-    a = a.slice();
-    for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; }
-    return a;
-  }
-  function safeGetBest(){
-    try{ var v = localStorage.getItem(STORE_KEY); return v===null?null:parseInt(v,10); }catch(e){ return null; }
-  }
-  function safeSetBest(v){ try{ localStorage.setItem(STORE_KEY, String(v)); }catch(e){} }
-
-  function start(){
-    order = shuffle(QUESTIONS);
-    idx = 0; score = 0; locked = false;
-    el.result.classList.remove("show");
-    el.quiz.style.display = "";
-    render();
-  }
-
+  var order=[], idx=0, score=0, locked=false;
+  var el={quiz:document.getElementById("quiz"),counter:document.getElementById("counter"),running:document.getElementById("runningScore"),bar:document.getElementById("barFill"),qnum:document.getElementById("qnum"),question:document.getElementById("question"),options:document.getElementById("options"),feedback:document.getElementById("feedback"),verdict:document.getElementById("verdict"),why:document.getElementById("why"),next:document.getElementById("nextBtn"),result:document.getElementById("result"),finalScore:document.getElementById("finalScore"),resultMsg:document.getElementById("resultMsg"),bestLine:document.getElementById("bestLine"),again:document.getElementById("againBtn")};
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function safeGetBest(){try{var v=localStorage.getItem(STORE_KEY);return v===null?null:parseInt(v,10);}catch(e){return null;}}
+  function safeSetBest(v){try{localStorage.setItem(STORE_KEY,String(v));}catch(e){}}
+  function start(){order=shuffle(QUESTIONS);idx=0;score=0;locked=false;el.result.classList.remove("show");el.quiz.style.display="";render();}
   function render(){
-    locked = false;
-    var item = order[idx];
-    el.counter.textContent = "Question " + (idx+1) + " of " + order.length;
-    el.running.textContent = "Score: " + score;
-    el.bar.style.width = (idx/order.length*100) + "%";
-    el.qnum.textContent = "Question " + (idx+1);
-    el.question.textContent = item.q + " =";
-
-    el.feedback.classList.remove("show");
-    el.verdict.className = "verdict";
+    locked=false;var item=order[idx];
+    el.counter.textContent="Question "+(idx+1)+" of "+order.length;
+    el.running.textContent="Score: "+score;
+    el.bar.style.width=(idx/order.length*100)+"%";
+    el.qnum.textContent="Question "+(idx+1);
+    el.question.textContent=item.q+" =";
+    el.feedback.classList.remove("show");el.verdict.className="verdict";
     el.next.classList.remove("show");
-    el.next.textContent = (idx === order.length-1) ? "See results →" : "Next question →";
-
-    el.options.innerHTML = "";
-    var opts = shuffle(item.options);
-    opts.forEach(function(opt, i){
-      var b = document.createElement("button");
-      b.className = "opt";
-      b.innerHTML = '<span class="key">'+KEYS[i]+'</span><span>'+opt+'</span>';
-      b.addEventListener("click", function(){ choose(b, opt, item); });
+    el.next.textContent=(idx===order.length-1)?"See results →":"Next question →";
+    el.options.innerHTML="";
+    shuffle(item.options).forEach(function(opt,i){
+      var b=document.createElement("button");b.className="opt";
+      b.innerHTML='<span class="key">'+KEYS[i]+'</span><span>'+opt+'</span>';
+      b.addEventListener("click",function(){choose(b,opt,item);});
       el.options.appendChild(b);
     });
   }
-
-  function choose(btn, chosen, item){
-    if(locked) return;
-    locked = true;
-    var correct = (chosen === item.answer);
-    if(correct) score++;
-
-    var buttons = el.options.querySelectorAll(".opt");
-    buttons.forEach(function(b){
-      b.disabled = true;
-      var label = b.querySelector("span:last-child").textContent;
-      if(label === item.answer){ b.classList.add("correct"); }
-      else if(b === btn){ b.classList.add("wrong"); }
-      else{ b.classList.add("dim"); }
+  function choose(btn,chosen,item){
+    if(locked)return;locked=true;
+    var correct=(chosen===item.answer);if(correct)score++;
+    el.options.querySelectorAll(".opt").forEach(function(b){
+      b.disabled=true;var label=b.querySelector("span:last-child").textContent;
+      if(label===item.answer)b.classList.add("correct");
+      else if(b===btn)b.classList.add("wrong");
+      else b.classList.add("dim");
     });
-
-    el.running.textContent = "Score: " + score;
-    el.verdict.textContent = correct ? "Correct!" : "Not quite";
-    el.verdict.classList.add(correct ? "right" : "nope");
-    el.why.textContent = item.why;
-    el.feedback.classList.add("show");
-    el.next.classList.add("show");
-    el.next.focus();
+    el.running.textContent="Score: "+score;
+    el.verdict.textContent=correct?"Correct!":"Not quite";
+    el.verdict.classList.add(correct?"right":"nope");
+    el.why.textContent=item.why;
+    el.feedback.classList.add("show");el.next.classList.add("show");el.next.focus();
   }
-
-  function nextQ(){
-    if(idx < order.length-1){ idx++; render(); window.scrollTo({top:0,behavior:"smooth"}); }
-    else{ finish(); }
-  }
-
+  function nextQ(){if(idx<order.length-1){idx++;render();window.scrollTo({top:0,behavior:"smooth"});}else{finish();}}
   function finish(){
-    el.bar.style.width = "100%";
-    el.quiz.style.display = "none";
-    el.finalScore.textContent = score;
-
-    var msg;
-    if(score === 10) msg = "Perfect score! 🎉";
-    else if(score >= 8) msg = "Great work!";
-    else if(score >= 5) msg = "Good effort — keep practising.";
-    else msg = "Keep going, you'll get there.";
-    el.resultMsg.textContent = msg;
-
-    var prevBest = safeGetBest();
-    if(prevBest === null || score > prevBest){ safeSetBest(score); el.bestLine.textContent = "New best score!"; }
-    else { el.bestLine.textContent = "Your best so far: " + prevBest + "/10"; }
-
-    el.result.classList.add("show");
-    window.scrollTo({top:0,behavior:"smooth"});
+    el.bar.style.width="100%";el.quiz.style.display="none";el.finalScore.textContent=score;
+    var msg;if(score===10)msg="Perfect score! 🎉";else if(score>=8)msg="Great work!";else if(score>=5)msg="Good effort — keep practising.";else msg="Keep going, you'll get there.";
+    el.resultMsg.textContent=msg;
+    var prevBest=safeGetBest();
+    if(prevBest===null||score>prevBest){safeSetBest(score);el.bestLine.textContent="New best score!";}
+    else{el.bestLine.textContent="Your best so far: "+prevBest+"/10";}
+    el.result.classList.add("show");window.scrollTo({top:0,behavior:"smooth"});
   }
-
-  el.next.addEventListener("click", nextQ);
-  el.again.addEventListener("click", start);
-  start();
+  el.next.addEventListener("click",nextQ);el.again.addEventListener("click",start);start();
 })();
 </script>
 </body>
