@@ -44,7 +44,7 @@
       el.running.textContent="Score: "+score;
       el.bar.style.width=(idx/TOTAL*100)+"%";
       el.qnum.textContent="Question "+(idx+1);
-      el.question.textContent=item.q+" =";
+      el.question.textContent=item.q+(CFG.appendEquals===false?"":" =");
       el.feedback.classList.remove("show");el.verdict.className="verdict";
       el.next.classList.remove("show");
       el.next.textContent=(idx===TOTAL-1)?"See results →":"Next question →";

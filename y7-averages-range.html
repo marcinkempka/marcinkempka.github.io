@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Year 7 — Practice: Averages &amp; Range</title>
+<title>Year 7 — Averages &amp; Range</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="practice.css">
+<link rel="stylesheet" href="quiz.css">
 </head>
-<!-- accent colour for this handout (Year 7 = indigo). Change just this to re-theme. -->
+<!-- accent colour for this quiz (Year 7 = indigo). Change just this to re-theme one quiz. -->
 <body style="--accent:#4F46E5">
 <main class="wrap">
 
@@ -18,222 +18,59 @@
 
   <header class="head">
     <p class="eyebrow">Year 7 &middot; Analysing &amp; displaying data</p>
-    <h1>Practice: Averages &amp; Range</h1>
-    <p class="intro">15 questions on the mode, median, mean and range, based on Unit 1.1. These are fresh questions written for self-practice &mdash; not copied from the textbook &mdash; covering finding each average, comparing data sets, and reasoning problems. Work each one out on paper, then reveal the worked answer to check.</p>
+    <h1>Averages &amp; Range</h1>
   </header>
 
-  <div class="toolbar">
-    <span class="count">15 questions &middot; with worked answers</span>
-    <button class="toggle-all" id="toggleAll" type="button">Show all answers</button>
+  <!-- quiz shell — shared by every quiz; do not edit per quiz -->
+  <div id="quiz">
+    <div class="progress-row">
+      <span id="counter">Question 1 of 10</span>
+      <span id="runningScore">Score: 0</span>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="card">
+      <p class="qnum" id="qnum">Question 1</p>
+      <p class="question" id="question">&nbsp;</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback">
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+      <button class="next" id="nextBtn">Next question &rarr;</button>
+    </div>
   </div>
 
-  <section class="qlist" id="qlist">
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">1</span>
-        <div class="qbody">
-          <span class="tag">Mode</span>
-          <p class="question">Find the mode of this set of numbers: <span class="math">6, 3, 7, 3, 9, 3, 6, 1</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Count how often each value appears. The number 3 appears three times, more than any other, so the mode is <span class="final">3</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">2</span>
-        <div class="qbody">
-          <span class="tag">Mode &middot; non-numerical data</span>
-          <p class="question">A class chooses their favourite colour. Find the modal colour: <span class="math">red, blue, red, green, blue, red, blue, blue, green</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Blue appears four times, red three times, green twice. The most common &mdash; the modal value &mdash; is <span class="final">blue</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">3</span>
-        <div class="qbody">
-          <span class="tag">Median &middot; odd number of values</span>
-          <p class="question">Work out the median of: <span class="math">15, 4, 9, 2, 11, 6, 8</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Put the values in order: 2, 4, 6, <strong>8</strong>, 9, 11, 15. There are 7 values, so the middle (4th) value is the median: <span class="final">8</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">4</span>
-        <div class="qbody">
-          <span class="tag">Median &middot; even number of values</span>
-          <p class="question">Work out the median of: <span class="math">20, 7, 13, 5, 9, 16</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">In order: 5, 7, <strong>9, 13</strong>, 16, 20. There are 6 values, so the median is halfway between the two middle ones: (9 + 13) &divide; 2 = <span class="final">11</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">5</span>
-        <div class="qbody">
-          <span class="tag">Range</span>
-          <p class="question">Work out the range of: <span class="math">34, 12, 27, 5, 19</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Range = largest &minus; smallest = 34 &minus; 5 = <span class="final">29</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">6</span>
-        <div class="qbody">
-          <span class="tag">Mean</span>
-          <p class="question">Work out the mean of: <span class="math">7, 2, 9, 4, 8</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Add the values: 7 + 2 + 9 + 4 + 8 = 30. Divide by how many there are: 30 &divide; 5 = <span class="final">6</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">7</span>
-        <div class="qbody">
-          <span class="tag">Mean &middot; decimals</span>
-          <p class="question">Work out the mean of: <span class="math">1.2, 0.8, 1.5, 0.5</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Add the values: 1.2 + 0.8 + 1.5 + 0.5 = 4.0. Divide by 4: 4.0 &divide; 4 = <span class="final">1.0</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">8</span>
-        <div class="qbody">
-          <span class="tag">Mean &middot; real context</span>
-          <p class="question">A shop records the number of customers each day for a week:<br><span class="math">12, 9, 15, 11, 8, 14, 15</span>. Work out the mean number of customers per day.</p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Total = 12 + 9 + 15 + 11 + 8 + 14 + 15 = 84. There are 7 days, so the mean = 84 &divide; 7 = <span class="final">12 customers per day</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">9</span>
-        <div class="qbody">
-          <span class="tag">All four measures</span>
-          <p class="question">For this set of marks, find the mode, median, range and mean: <span class="math">8, 5, 5, 2, 10</span></p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">In order: 2, 5, <strong>5</strong>, 8, 10.<br>Mode = <span class="final">5</span> (appears twice). Median = middle value = <span class="final">5</span>. Range = 10 &minus; 2 = <span class="final">8</span>. Mean = (2 + 5 + 5 + 8 + 10) &divide; 5 = 30 &divide; 5 = <span class="final">6</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">10</span>
-        <div class="qbody">
-          <span class="tag">Comparing data sets</span>
-          <p class="question">Two netball players record goals scored over 5 matches.<br><span class="math">Aisha: 3, 4, 2, 4, 2</span><br><span class="math">Bea: 0, 7, 1, 0, 7</span><br>Find the mean and range for each, then say who is the more consistent scorer.</p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Aisha: mean = 15 &divide; 5 = 3, range = 4 &minus; 2 = 2.<br>Bea: mean = 15 &divide; 5 = 3, range = 7 &minus; 0 = 7.<br>Both have the same mean (3), but Aisha&rsquo;s range is much smaller, so her scores vary less. <span class="final">Aisha is the more consistent scorer.</span></p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">11</span>
-        <div class="qbody">
-          <span class="tag">Reasoning</span>
-          <p class="question">Write down a set of five numbers that has <strong>two</strong> modes.</p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Any set where two different values each appear most often works. For example <span class="final">2, 2, 5, 7, 7</span> &mdash; here both 2 and 7 appear twice, so the set has two modes (it is &lsquo;bimodal&rsquo;).</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">12</span>
-        <div class="qbody">
-          <span class="tag">Reasoning</span>
-          <p class="question">Write down a set of numbers that has <strong>no</strong> mode, and explain why it has none.</p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">For example <span class="final">1, 3, 5, 8, 9</span>. Every value appears exactly once, so no value is more common than the others &mdash; there is no mode.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">13</span>
-        <div class="qbody">
-          <span class="tag">Problem-solving</span>
-          <p class="question">The mean of <span class="math">5, 8, 6</span> and <span class="math">n</span> is <span class="math">7</span>. Work out the value of <span class="math">n</span>.</p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">There are 4 values with a mean of 7, so their total must be 4 &times; 7 = 28. The three known values add to 5 + 8 + 6 = 19. So n = 28 &minus; 19 = <span class="final">9</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">14</span>
-        <div class="qbody">
-          <span class="tag">Problem-solving</span>
-          <p class="question">Find a set of <strong>three</strong> numbers with a <span class="math">range = 0</span> and a <span class="math">mean = 5</span>.</p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">A range of 0 means the largest and smallest values are equal, so all three numbers must be the same. For the mean to be 5, each one must be 5: <span class="final">5, 5, 5</span>.</p></div>
-        </div>
-      </div>
-    </article>
-
-    <article class="qitem">
-      <div class="qrow">
-        <span class="qnum">15</span>
-        <div class="qbody">
-          <span class="tag">Reasoning &middot; outliers</span>
-          <p class="question">Seven friends compare how much pocket money they get each week:<br><span class="math">&pound;5, &pound;5, &pound;6, &pound;5, &pound;6, &pound;5, &pound;40</span>.<br>One value is much larger than the rest. Is the mean or the median a better way to describe a &lsquo;typical&rsquo; amount? Explain.</p>
-          <button class="reveal-btn" type="button">Show answer</button>
-          <div class="answer"><p class="label">Answer</p><p class="working">Mean = (5 + 5 + 6 + 5 + 6 + 5 + 40) &divide; 7 = 72 &divide; 7 &asymp; &pound;10.30. In order the values are 5, 5, 5, <strong>5</strong>, 6, 6, 40, so the median = &pound;5. The single large value (&pound;40) is an <strong>outlier</strong> that drags the mean up well above what most friends actually get. <span class="final">The median (&pound;5) is the better description of a typical amount.</span></p></div>
-        </div>
-      </div>
-    </article>
-
-  </section>
-
-  <p class="foot">Based on Unit 1.1 &mdash; Averages and range. Original questions for self-practice.</p>
+  <div class="card result" id="result">
+    <div class="score-num"><span id="finalScore">0</span><span id="outOf">/10</span></div>
+    <p class="msg" id="resultMsg"></p>
+    <p class="best" id="bestLine"></p>
+    <div class="actions">
+      <button class="btn primary" id="againBtn">Try again</button>
+      <a class="btn ghost" href="year7.html">Back to Year 7</a>
+    </div>
+  </div>
 
 </main>
 
+<!-- ===== The only part that changes per quiz: questions ===== -->
 <script>
-  document.querySelectorAll('.reveal-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var ans = btn.parentElement.querySelector('.answer');
-      var open = ans.classList.toggle('show');
-      btn.textContent = open ? 'Hide answer' : 'Show answer';
-    });
-  });
-  var toggleAll = document.getElementById('toggleAll');
-  toggleAll.addEventListener('click', function(){
-    var anyHidden = !!document.querySelector('.answer:not(.show)');
-    document.querySelectorAll('.qitem').forEach(function(item){
-      var ans = item.querySelector('.answer');
-      var btn = item.querySelector('.reveal-btn');
-      if(anyHidden){ ans.classList.add('show'); btn.textContent = 'Hide answer'; }
-      else { ans.classList.remove('show'); btn.textContent = 'Show answer'; }
-    });
-    toggleAll.textContent = anyHidden ? 'Hide all answers' : 'Show all answers';
-  });
+window.QUIZ = {
+  storeKey: "y7-averages-range",
+  appendEquals: false,
+  questions: [
+    { q:"Find the mode of: 6, 3, 7, 3, 9, 3, 6, 1", answer:"3", options:["3","6","7","9"], why:"The mode is the most common value. 3 appears three times — more than any other number." },
+    { q:"Find the mode of: 4, 8, 4, 2, 4, 8, 9", answer:"4", options:["4","8","2","9"], why:"4 appears three times, 8 appears twice. The most common value is 4." },
+    { q:"Work out the median of: 15, 4, 9, 2, 11, 6, 8", answer:"8", options:["8","9","6","11"], why:"In order: 2, 4, 6, 8, 9, 11, 15. With 7 values the middle (4th) one is 8." },
+    { q:"Work out the median of: 20, 7, 13, 5, 9, 16", answer:"11", options:["11","9","13","10"], why:"In order: 5, 7, 9, 13, 16, 20. The two middle values are 9 and 13, and (9 + 13) ÷ 2 = 11." },
+    { q:"Work out the range of: 34, 12, 27, 5, 19", answer:"29", options:["29","34","22","12"], why:"Range = largest − smallest = 34 − 5 = 29." },
+    { q:"Work out the mean of: 7, 2, 9, 4, 8", answer:"6", options:["6","5","7","30"], why:"Sum = 30, and there are 5 values. 30 ÷ 5 = 6." },
+    { q:"Work out the mean of: 1.2, 0.8, 1.5, 0.5", answer:"1.0", options:["1.0","1.2","0.8","4.0"], why:"Sum = 4.0, divided by 4 values. 4.0 ÷ 4 = 1.0." },
+    { q:"A shop counts customers each day: 12, 9, 15, 11, 8, 14, 15. What is the mean per day?", answer:"12", options:["12","11","13","84"], why:"Total = 84 over 7 days. 84 ÷ 7 = 12." },
+    { q:"The mean of 5, 8, 6 and n is 7. What is n?", answer:"9", options:["9","7","8","6"], why:"Four values with mean 7 total 28. The known three add to 19, so n = 28 − 19 = 9." },
+    { q:"For 5, 5, 6, 5, 6, 5, 40, which average best describes a 'typical' value?", answer:"Median", options:["Median","Mean","Mode","Range"], why:"The outlier 40 pulls the mean up to about 10. The median (5) better reflects what most of the values actually are." }
+  ]
+};
 </script>
+<script src="quiz.js"></script>
 </body>
 </html>
