@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Year 8 — Adding &amp; Subtracting Negatives</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<!-- accent colour for this quiz (Year 8 = teal). Change just this to re-theme one quiz. -->
+<body style="--accent:#0D9488">
+<main class="wrap">
+
+  <a class="back" href="year8.html"><span aria-hidden="true">&larr;</span> Back to Year 8</a>
+
+  <header class="head">
+    <p class="eyebrow">Year 8 &middot; Number</p>
+    <h1>Adding &amp; Subtracting Negatives</h1>
+  </header>
+
+  <!-- quiz shell — shared by every quiz; do not edit per quiz -->
+  <div id="quiz">
+    <div class="progress-row">
+      <span id="counter">Question 1 of 10</span>
+      <span id="runningScore">Score: 0</span>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="card">
+      <p class="qnum" id="qnum">Question 1</p>
+      <p class="question" id="question">&nbsp;</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback">
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+      <button class="next" id="nextBtn">Next question &rarr;</button>
+    </div>
+  </div>
+
+  <div class="card result" id="result">
+    <div class="score-num"><span id="finalScore">0</span><span id="outOf">/10</span></div>
+    <p class="msg" id="resultMsg"></p>
+    <p class="best" id="bestLine"></p>
+    <div class="actions">
+      <button class="btn primary" id="againBtn">Try again</button>
+      <a class="btn ghost" href="year8.html">Back to Year 8</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== The only part that changes per quiz: questions ===== -->
+<script>
+window.QUIZ = {
+  storeKey: "y8-add-sub-negatives",
+  questions: [
+    { q:"-8 + 3", answer:"-5", options:["-5","5","-11","11"], why:"Start at -8 and move 3 to the right → -5." },
+    { q:"5 + (-9)", answer:"-4", options:["-4","4","14","-14"], why:"Adding a negative means subtract: 5 - 9 = -4." },
+    { q:"-4 - 6", answer:"-10", options:["-10","10","-2","2"], why:"Both moves go down: -4 then 6 more in the negative direction = -10." },
+    { q:"7 - (-2)", answer:"9", options:["9","5","-9","-5"], why:"Subtracting a negative adds: 7 + 2 = 9." },
+    { q:"-3 + (-5)", answer:"-8", options:["-8","8","2","-2"], why:"Adding a negative subtracts: -3 - 5 = -8." },
+    { q:"-10 - (-4)", answer:"-6", options:["-6","-14","6","14"], why:"Subtracting a negative adds: -10 + 4 = -6." },
+    { q:"6 + (-6)", answer:"0", options:["0","12","-12","6"], why:"6 - 6 = 0. Opposites cancel out." },
+    { q:"-2 - (-9)", answer:"7", options:["7","-7","-11","11"], why:"Subtracting a negative adds: -2 + 9 = 7." },
+    { q:"-7 + 12", answer:"5", options:["5","-5","19","-19"], why:"Start at -7 and move 12 to the right → 5." },
+    { q:"-5 - 8 - (-3)", answer:"-10", options:["-10","-16","0","10"], why:"-5 - 8 = -13, then subtracting -3 adds 3: -13 + 3 = -10." }
+  ]
+};
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>
