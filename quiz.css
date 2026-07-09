@@ -77,3 +77,14 @@ a{color:inherit;text-decoration:none}
 .qtable th{background:#EEF1F5;color:var(--muted);font-weight:700;font-size:.85rem}
 .qtable tr th:first-child{text-align:left}
 .qtable td.missing,.qtable th.missing{background:color-mix(in srgb,var(--accent) 10%,#fff);color:var(--accent);font-weight:800}
+
+/* optional per-question chart — add  chart:{type,labels,values,...}  to a question in any quiz */
+.qchart-wrap{overflow-x:auto;margin:-8px 0 24px}
+.qchart{width:100%;max-width:560px;display:block}
+.qchart .grid{stroke:var(--line);stroke-width:1}
+.qchart .axisline{stroke:#B9C0CC;stroke-width:1.5}
+.qchart .tick{font:600 12px var(--font);fill:var(--muted)}
+.qchart .axis{font:700 12px var(--font);fill:var(--muted)}
+.qchart .lineplot{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round}
+.qchart .dot{fill:var(--accent)}
+.qchart .barfill{fill:color-mix(in srgb,var(--accent) 70%,#fff)}

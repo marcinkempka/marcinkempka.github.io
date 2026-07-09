@@ -13,12 +13,20 @@
        ]
      };
 
-   Optional per question: a data table rendered below the
+   Optional per question — a data table rendered below the
    question text. First row and first column are headers.
    Use "?" for a highlighted missing cell.
      { q:"What goes in the highlighted cell?",
        table:[["","Sat","Sun"],["Alan","20","22"],["Total","?","37"]],
-       answer:"40", options:[...], why:"..." }
+       ... }
+
+   Optional per question — a simple chart (SVG, drawn here):
+     { q:"What was the range?",
+       chart:{ type:"line",            // or "bar"
+               labels:["Mon","Tue"],   // x-axis categories
+               values:[31,33],         // one value per label
+               xLabel:"Day", yLabel:"Speed (knots)" },
+       ... }
    =========================================================== */
 (function(){
   "use strict";
@@ -64,6 +72,63 @@
       el.question.insertAdjacentElement("afterend",wrap);
     }
 
+    function renderChart(item){
+      var old=g("qchart");
+      if(old)old.parentNode.removeChild(old);
+      if(!item.chart)return;
+      var c=item.chart;
+      var W=560,H=320,L=56,R=14,T=18,B=64;
+      var iw=W-L-R, ih=H-T-B;
+      var vals=c.values, labels=c.labels;
+      var maxV=Math.max.apply(null,vals);
+      var stp=1, found=false;
+      for(var p=0;p<7&&!found;p++){
+        var mults=[1,2,5];
+        for(var mi=0;mi<3;mi++){
+          var st=mults[mi]*Math.pow(10,p);
+          if(maxV/st<=6){stp=st;found=true;break;}
+        }
+      }
+      var yMax=Math.ceil(maxV/stp)*stp;
+      function yPix(v){return T+ih-(v/yMax)*ih;}
+      var NS="http://www.w3.org/2000/svg";
+      var svg=document.createElementNS(NS,"svg");
+      svg.setAttribute("viewBox","0 0 "+W+" "+H);
+      svg.setAttribute("class","qchart");
+      svg.setAttribute("role","img");
+      function add(tag,attrs,text){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;svg.appendChild(e);return e;}
+      for(var v=0;v<=yMax+stp/1000;v+=stp){
+        var y=yPix(v);
+        add("line",{x1:L,y1:y,x2:W-R,y2:y,"class":"grid"});
+        add("text",{x:L-8,y:y+4,"text-anchor":"end","class":"tick"},String(v));
+      }
+      var slot=iw/labels.length;
+      if(c.type==="bar"){
+        var bw=slot*0.6;
+        vals.forEach(function(val,i){
+          add("rect",{x:L+slot*i+(slot-bw)/2,y:yPix(val),width:bw,height:(T+ih-yPix(val)),rx:3,"class":"barfill"});
+        });
+      }else{
+        var pts=vals.map(function(val,i){return (L+slot*i+slot/2)+","+yPix(val);}).join(" ");
+        add("polyline",{points:pts,"class":"lineplot"});
+        vals.forEach(function(val,i){
+          add("circle",{cx:L+slot*i+slot/2,cy:yPix(val),r:4,"class":"dot"});
+        });
+      }
+      labels.forEach(function(lb,i){
+        add("text",{x:L+slot*i+slot/2,y:T+ih+18,"text-anchor":"middle","class":"tick"},lb);
+      });
+      if(c.xLabel)add("text",{x:L+iw/2,y:H-8,"text-anchor":"middle","class":"axis"},c.xLabel);
+      if(c.yLabel)add("text",{x:14,y:T+ih/2,"text-anchor":"middle","class":"axis",transform:"rotate(-90 14 "+(T+ih/2)+")"},c.yLabel);
+      add("line",{x1:L,y1:T,x2:L,y2:T+ih,"class":"axisline"});
+      add("line",{x1:L,y1:T+ih,x2:W-R,y2:T+ih,"class":"axisline"});
+      var wrap=document.createElement("div");
+      wrap.id="qchart";wrap.className="qchart-wrap";
+      wrap.appendChild(svg);
+      var anchor=g("qtable")||el.question;
+      anchor.insertAdjacentElement("afterend",wrap);
+    }
+
     function start(){order=shuffle(DATA);idx=0;score=0;locked=false;el.result.classList.remove("show");el.quiz.style.display="";render();}
 
     function render(){
@@ -74,6 +139,7 @@
       el.qnum.textContent="Question "+(idx+1);
       el.question.textContent=item.q+(CFG.appendEquals===false?"":" =");
       renderTable(item);
+      renderChart(item);
       el.feedback.classList.remove("show");el.verdict.className="verdict";
       el.next.classList.remove("show");
       el.next.textContent=(idx===TOTAL-1)?"See results →":"Next question →";

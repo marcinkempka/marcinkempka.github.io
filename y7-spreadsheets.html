@@ -54,20 +54,49 @@
 
 <!-- ===== The only part that changes per quiz: questions ===== -->
 <script>
+var GRID = [["","A","B"],["1","81","16"],["2","54","25"]];
+var LAUREN = { type:"bar", labels:["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], values:[30,45,45,15,70,120,60], xLabel:"Day", yLabel:"Time (minutes)" };
+var ANITA = { type:"bar", labels:["clarinet","violin","piano","saxophone","drum"], values:[3,8,5,4,5], xLabel:"Instrument", yLabel:"Number of girls" };
+
 window.QUIZ = {
   storeKey: "y7-spreadsheets",
   appendEquals: false,
   questions: [
-    { q:"A spreadsheet has 81 in cell A1, 16 in cell B1, 54 in cell A2 and 25 in cell B2. What number is in cell B2?", answer:"25", options:["25","54","16","81"], why:"Cell B2 is where column B meets row 2 — it contains 25." },
-    { q:"Using the same spreadsheet (A1 = 81, B1 = 16, A2 = 54, B2 = 25), which cell is the number 81 in?", answer:"A1", options:["A1","B1","A2","B2"], why:"81 is in column A, row 1 — cell A1." },
-    { q:"What does typing = at the start of a spreadsheet cell tell the spreadsheet to do?", answer:"Calculate something", options:["Calculate something","Make the text bold","Delete the cell","Sort the data"], why:"Typing = tells the spreadsheet the cell contains a formula to calculate, like =mode( or =average(." },
-    { q:"Which spreadsheet formula finds the mean of a set of data?", answer:"=average(", options:["=average(","=mean(","=median(","=mode("], why:"Spreadsheets use the word 'average' instead of 'mean', so you type =average( and select the data." },
-    { q:"Data is sorted from smallest to largest in cells A1 to A10. Which formula works out the range?", answer:"=A10-A1", options:["=A10-A1","=A1-A10","=A10+A1","=average(A1:A10)"], why:"Range = largest − smallest. After sorting, the largest value is in A10 and the smallest in A1, so =A10-A1." },
-    { q:"The numbers of weeks the ten most popular UK singles stayed in the Top 10 were: 14, 10, 12, 16, 10, 11, 11, 13, 12, 10. What is the mode?", answer:"10", options:["10","11","12","16"], why:"10 appears three times — more than any other value." },
-    { q:"For the same data (sorted: 10, 10, 10, 11, 11, 12, 12, 13, 14, 16), what is the median?", answer:"11.5", options:["11.5","11","12","13"], why:"With 10 values, the median is halfway between the 5th and 6th values: (11 + 12) ÷ 2 = 11.5." },
-    { q:"Lauren played a computer game for 30, 45, 45, 15, 70, 120 and 60 minutes over 7 days. What is the mean time per day?", answer:"55 minutes", options:["55 minutes","45 minutes","60 minutes","385 minutes"], why:"Total = 385 minutes over 7 days. 385 ÷ 7 = 55 minutes." },
-    { q:"Find the range of: 11, 7, 12, 12, 8, 6, 11, 12, 9, 8", answer:"6", options:["6","12","9.6","5"], why:"Range = largest − smallest = 12 − 6 = 6." },
-    { q:"Anita has a table showing how many girls prefer each of five musical instruments. Which graph is most appropriate for this data?", answer:"A bar chart", options:["A bar chart","A line graph","A scatter graph","No graph can show this"], why:"A bar chart is best for comparing counts across categories. A line graph would suggest a trend over time, which doesn't apply here." }
+    { q:"The table shows part of a spreadsheet. What number is in cell B2?",
+      table:GRID,
+      answer:"25", options:["25","54","16","81"],
+      why:"Cell B2 is where column B meets row 2 — it contains 25." },
+    { q:"Using the same spreadsheet — which cell is the number 81 in?",
+      table:GRID,
+      answer:"A1", options:["A1","B1","A2","B2"],
+      why:"81 is in column A, row 1 — cell A1." },
+    { q:"What does typing = at the start of a spreadsheet cell tell the spreadsheet to do?",
+      answer:"Calculate something", options:["Calculate something","Make the text bold","Delete the cell","Sort the data"],
+      why:"Typing = tells the spreadsheet the cell contains a formula to calculate, like =mode( or =average(." },
+    { q:"Which spreadsheet formula finds the mean of a set of data?",
+      answer:"=average(", options:["=average(","=mean(","=median(","=mode("],
+      why:"Spreadsheets use the word 'average' instead of 'mean', so you type =average( and select the data." },
+    { q:"Data is sorted from smallest to largest in cells A1 to A10. Which formula works out the range?",
+      answer:"=A10-A1", options:["=A10-A1","=A1-A10","=A10+A1","=average(A1:A10)"],
+      why:"Range = largest − smallest. After sorting, the largest value is in A10 and the smallest in A1, so =A10-A1." },
+    { q:"The numbers of weeks the ten most popular UK singles stayed in the Top 10 were: 14, 10, 12, 16, 10, 11, 11, 13, 12, 10. What is the mode?",
+      answer:"10", options:["10","11","12","16"],
+      why:"10 appears three times — more than any other value." },
+    { q:"For the same data (sorted: 10, 10, 10, 11, 11, 12, 12, 13, 14, 16), what is the median?",
+      answer:"11.5", options:["11.5","11","12","13"],
+      why:"With 10 values, the median is halfway between the 5th and 6th values: (11 + 12) ÷ 2 = 11.5." },
+    { q:"Lauren drew this bar chart of the time she spent playing a computer game. On which day did she play for the longest?",
+      chart:LAUREN,
+      answer:"Saturday", options:["Saturday","Friday","Sunday","Wednesday"],
+      why:"The tallest bar is Saturday, at 120 minutes." },
+    { q:"Using the same chart — what is the mean time Lauren played per day?",
+      chart:LAUREN,
+      answer:"55 minutes", options:["55 minutes","45 minutes","60 minutes","120 minutes"],
+      why:"Total = 30 + 45 + 45 + 15 + 70 + 120 + 60 = 385 minutes over 7 days. 385 ÷ 7 = 55." },
+    { q:"Anita asked 25 girls in Year 7 which instrument they liked most and drew this bar chart. Which instrument is the mode?",
+      chart:ANITA,
+      answer:"Violin", options:["Violin","Piano","Drum","Clarinet"],
+      why:"The mode is the most common answer — the tallest bar is violin, with 8 girls." }
   ]
 };
 </script>
