@@ -12,6 +12,13 @@
          ...
        ]
      };
+
+   Optional per question: a data table rendered below the
+   question text. First row and first column are headers.
+   Use "?" for a highlighted missing cell.
+     { q:"What goes in the highlighted cell?",
+       table:[["","Sat","Sun"],["Alan","20","22"],["Total","?","37"]],
+       answer:"40", options:[...], why:"..." }
    =========================================================== */
 (function(){
   "use strict";
@@ -36,6 +43,27 @@
     function getBest(){try{var v=localStorage.getItem(STORE_KEY);return v===null?null:parseInt(v,10);}catch(e){return null;}}
     function setBest(v){try{localStorage.setItem(STORE_KEY,String(v));}catch(e){}}
 
+    function renderTable(item){
+      var old=g("qtable");
+      if(old)old.parentNode.removeChild(old);
+      if(!item.table)return;
+      var wrap=document.createElement("div");
+      wrap.id="qtable";wrap.className="qtable-wrap";
+      var t=document.createElement("table");t.className="qtable";
+      item.table.forEach(function(row,r){
+        var tr=document.createElement("tr");
+        row.forEach(function(cell,c){
+          var cellEl=document.createElement((r===0||c===0)?"th":"td");
+          if(cell==="?")cellEl.className="missing";
+          cellEl.textContent=cell;
+          tr.appendChild(cellEl);
+        });
+        t.appendChild(tr);
+      });
+      wrap.appendChild(t);
+      el.question.insertAdjacentElement("afterend",wrap);
+    }
+
     function start(){order=shuffle(DATA);idx=0;score=0;locked=false;el.result.classList.remove("show");el.quiz.style.display="";render();}
 
     function render(){
@@ -45,6 +73,7 @@
       el.bar.style.width=(idx/TOTAL*100)+"%";
       el.qnum.textContent="Question "+(idx+1);
       el.question.textContent=item.q+(CFG.appendEquals===false?"":" =");
+      renderTable(item);
       el.feedback.classList.remove("show");el.verdict.className="verdict";
       el.next.classList.remove("show");
       el.next.textContent=(idx===TOTAL-1)?"See results →":"Next question →";
