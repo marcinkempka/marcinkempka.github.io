@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Year 7 — Two-Way Tables &amp; Bar Charts</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<!-- accent colour for this quiz (Year 7 = indigo). Change just this to re-theme one quiz. -->
+<body style="--accent:#4F46E5">
+<main class="wrap">
+
+  <a class="back" href="year7.html"><span aria-hidden="true">&larr;</span> Back to Year 7</a>
+
+  <header class="head">
+    <p class="eyebrow">Year 7 &middot; Analysing &amp; displaying data</p>
+    <h1>Two-Way Tables &amp; Bar Charts</h1>
+  </header>
+
+  <!-- quiz shell — shared by every quiz; do not edit per quiz -->
+  <div id="quiz">
+    <div class="progress-row">
+      <span id="counter">Question 1 of 10</span>
+      <span id="runningScore">Score: 0</span>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="card">
+      <p class="qnum" id="qnum">Question 1</p>
+      <p class="question" id="question">&nbsp;</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback">
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+      <button class="next" id="nextBtn">Next question &rarr;</button>
+    </div>
+  </div>
+
+  <div class="card result" id="result">
+    <div class="score-num"><span id="finalScore">0</span><span id="outOf">/10</span></div>
+    <p class="msg" id="resultMsg"></p>
+    <p class="best" id="bestLine"></p>
+    <div class="actions">
+      <button class="btn primary" id="againBtn">Try again</button>
+      <a class="btn ghost" href="year7.html">Back to Year 7</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== The only part that changes per quiz: questions ===== -->
+<script>
+window.QUIZ = {
+  storeKey: "y7-two-way-tables",
+  appendEquals: false,
+  questions: [
+    { q:"Alan did 20 press-ups on Saturday and 22 on Sunday. Yolanda did 20 on Saturday and 15 on Sunday. How many press-ups were done in total on Sunday?", answer:"37", options:["37","40","42","35"], why:"Add the Sunday column of the two-way table: 22 + 15 = 37." },
+    { q:"Using the same data (Alan: 20 and 22, Yolanda: 20 and 15), how many press-ups did they do altogether over the weekend?", answer:"77", options:["77","75","42","35"], why:"Row totals: Alan 20 + 22 = 42, Yolanda 20 + 15 = 35. Overall total = 42 + 35 = 77." },
+    { q:"In a two-way table, the row totals added together should always equal…", answer:"The column totals added together", options:["The column totals added together","Zero","The largest value in the table","Twice the overall total"], why:"Both give the overall total — adding row totals and adding column totals are two ways of counting the same data, so they must match. This is a useful check." },
+    { q:"The Sohal family recycled 50 glass bottles and 45 plastic bottles. The Jenkins family recycled 20 glass bottles and 65 plastic bottles. How many bottles were recycled altogether?", answer:"180", options:["180","115","95","85"], why:"Add all four values: 50 + 45 + 20 + 65 = 180 bottles." },
+    { q:"In a month the Sohal family recycled 45, 50, 45, 20 and 30 items and the Jenkins family recycled 35, 20, 65, 50 and 5 items. Which family recycled more?", answer:"Sohal, by 15 items", options:["Sohal, by 15 items","Jenkins, by 15 items","Sohal, by 5 items","They recycled the same amount"], why:"Sohal total = 190, Jenkins total = 175. The Sohals recycled 190 − 175 = 15 more items." },
+    { q:"Which type of chart compares two sets of data by drawing their bars side by side?", answer:"A dual bar chart", options:["A dual bar chart","A compound bar chart","A line graph","A pie chart"], why:"A dual bar chart compares two sets of data with bars drawn side by side, like the Sohal and Jenkins recycling chart." },
+    { q:"In a compound bar chart, how are the different sets of data shown?", answer:"Stacked together in one bar", options:["Stacked together in one bar","Side by side as separate bars","As points joined by lines","In separate charts"], why:"A compound bar chart combines different sets of data in one bar — the sections are stacked on top of each other." },
+    { q:"Hugh counted insects visiting blue flowers: 18 bees and 3 butterflies. How many insects visited blue flowers altogether?", answer:"21", options:["21","15","18","3"], why:"18 + 3 = 21 insects." },
+    { q:"Bees visited flowers of each colour this many times — white: 7, yellow: 15, red: 2, blue: 18, green: 1. Which colour is most attractive to bees?", answer:"Blue", options:["Blue","Yellow","White","Red"], why:"Blue has the highest count, 18 visits." },
+    { q:"7 bees and 7 butterflies visited white flowers. Hugh says, 'Bees and butterflies are equally attracted to white.' Is he correct?", answer:"Yes — the counts are both 7", options:["Yes — the counts are both 7","No — more bees visited white","No — more butterflies visited white","You cannot compare two different insects"], why:"Both counts are 7, so based on this data he is correct — the same number of each insect visited white flowers." }
+  ]
+};
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>

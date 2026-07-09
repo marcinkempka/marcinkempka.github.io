@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Year 7 — Grouped Data &amp; Frequency Tables</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<!-- accent colour for this quiz (Year 7 = indigo). Change just this to re-theme one quiz. -->
+<body style="--accent:#4F46E5">
+<main class="wrap">
+
+  <a class="back" href="year7.html"><span aria-hidden="true">&larr;</span> Back to Year 7</a>
+
+  <header class="head">
+    <p class="eyebrow">Year 7 &middot; Analysing &amp; displaying data</p>
+    <h1>Grouped Data &amp; Frequency Tables</h1>
+  </header>
+
+  <!-- quiz shell — shared by every quiz; do not edit per quiz -->
+  <div id="quiz">
+    <div class="progress-row">
+      <span id="counter">Question 1 of 10</span>
+      <span id="runningScore">Score: 0</span>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="card">
+      <p class="qnum" id="qnum">Question 1</p>
+      <p class="question" id="question">&nbsp;</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback">
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+      <button class="next" id="nextBtn">Next question &rarr;</button>
+    </div>
+  </div>
+
+  <div class="card result" id="result">
+    <div class="score-num"><span id="finalScore">0</span><span id="outOf">/10</span></div>
+    <p class="msg" id="resultMsg"></p>
+    <p class="best" id="bestLine"></p>
+    <div class="actions">
+      <button class="btn primary" id="againBtn">Try again</button>
+      <a class="btn ghost" href="year7.html">Back to Year 7</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== The only part that changes per quiz: questions ===== -->
+<script>
+window.QUIZ = {
+  storeKey: "y7-grouped-data",
+  appendEquals: false,
+  questions: [
+    { q:"Data is grouped into the classes 1–5, 6–10, 11–15 and 16–20. Which class does the value 17 belong to?", answer:"16–20", options:["16–20","11–15","6–10","1–5"], why:"17 is between 16 and 20, so it goes in the class 16–20." },
+    { q:"A frequency table of pulse rates shows: 70–79 has frequency 1, 80–89 has frequency 8, 90–99 has frequency 7, 100–109 has frequency 3. What is the modal class?", answer:"80–89", options:["80–89","90–99","100–109","70–79"], why:"The modal class is the one with the highest frequency. 80–89 has the highest frequency, 8." },
+    { q:"Using the same pulse rate table (70–79: 1, 80–89: 8, 90–99: 7, 100–109: 3), how many students had a pulse rate between 90 and 109?", answer:"10", options:["10","7","3","11"], why:"Add the frequencies of the classes 90–99 and 100–109: 7 + 3 = 10." },
+    { q:"Using the same pulse rate table (frequencies 1, 8, 7 and 3), how many students were measured in total?", answer:"19", options:["19","18","20","10"], why:"Add all the frequencies: 1 + 8 + 7 + 3 = 19." },
+    { q:"Which of these is continuous data?", answer:"The masses of a batch of bread loaves", options:["The masses of a batch of bread loaves","The numbers of songs on some mp3 players","Shoe sizes","The number of pets in a family"], why:"Continuous data is measured and can take any value — like length, mass and capacity. The others can only take particular values, so they are discrete." },
+    { q:"Which of these is discrete data?", answer:"The number of goals scored in a match", options:["The number of goals scored in a match","The heights of some students","The masses of some parcels","The times taken to run 100 m"], why:"Discrete data can only take particular values — you can score 2 or 3 goals, but never 2.7. Heights, masses and times are measured, so they are continuous." },
+    { q:"How many of these values belong in the class 1–5? Data: 7, 3, 8, 11, 2, 21, 15, 12, 4, 20, 13, 2, 15, 12, 4, 17", answer:"5", options:["5","4","6","3"], why:"The values from 1 to 5 are: 3, 2, 2, 4 and 4 — that is 5 values." },
+    { q:"Bat wingspans in cm: 18, 28, 25, 8, 19, 22, 11, 24, 5, 13, 23, 23. The data is grouped into classes 0–10, 10–20 and 20–30 (each value goes in the lowest class it fits, above the lower bound). What is the modal class?", answer:"20–30", options:["20–30","10–20","0–10","They are all equal"], why:"0–10 has 2 values (8, 5), 10–20 has 4 values (18, 19, 11, 13), and 20–30 has 6 values (28, 25, 22, 24, 23, 23). The modal class is 20–30." },
+    { q:"What is the modal class of a set of grouped data?", answer:"The class with the highest frequency", options:["The class with the highest frequency","The class in the middle of the table","The class containing the biggest values","The widest class"], why:"The modal class is the class with the highest frequency — the group that the most values fall into." },
+    { q:"A table of student heights shows: 120–130 cm: 1, 130–140 cm: 4, 140–150 cm: 6, 150–160 cm: 5, 160–170 cm: 2. How many students are at least 150 cm tall?", answer:"7", options:["7","5","6","2"], why:"At least 150 cm means the classes 150–160 and 160–170: 5 + 2 = 7 students." }
+  ]
+};
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>

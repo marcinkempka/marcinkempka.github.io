@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Year 7 — Line Graphs &amp; Misleading Graphs</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<!-- accent colour for this quiz (Year 7 = indigo). Change just this to re-theme one quiz. -->
+<body style="--accent:#4F46E5">
+<main class="wrap">
+
+  <a class="back" href="year7.html"><span aria-hidden="true">&larr;</span> Back to Year 7</a>
+
+  <header class="head">
+    <p class="eyebrow">Year 7 &middot; Analysing &amp; displaying data</p>
+    <h1>Line Graphs &amp; Misleading Graphs</h1>
+  </header>
+
+  <!-- quiz shell — shared by every quiz; do not edit per quiz -->
+  <div id="quiz">
+    <div class="progress-row">
+      <span id="counter">Question 1 of 10</span>
+      <span id="runningScore">Score: 0</span>
+    </div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="card">
+      <p class="qnum" id="qnum">Question 1</p>
+      <p class="question" id="question">&nbsp;</p>
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback">
+        <p class="verdict" id="verdict"></p>
+        <p class="why" id="why"></p>
+      </div>
+      <button class="next" id="nextBtn">Next question &rarr;</button>
+    </div>
+  </div>
+
+  <div class="card result" id="result">
+    <div class="score-num"><span id="finalScore">0</span><span id="outOf">/10</span></div>
+    <p class="msg" id="resultMsg"></p>
+    <p class="best" id="bestLine"></p>
+    <div class="actions">
+      <button class="btn primary" id="againBtn">Try again</button>
+      <a class="btn ghost" href="year7.html">Back to Year 7</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== The only part that changes per quiz: questions ===== -->
+<script>
+window.QUIZ = {
+  storeKey: "y7-line-graphs",
+  appendEquals: false,
+  questions: [
+    { q:"When a line graph shows changes over time, where should time go?", answer:"On the horizontal axis", options:["On the horizontal axis","On the vertical axis","On either axis","Time is not shown on a line graph"], why:"Time always goes on the horizontal (x) axis, so the line reads left to right as time passes." },
+    { q:"A scuba tank held 15 litres of air at the start of a dive and 6 litres after 40 minutes. How much air did the diver use in the first 40 minutes?", answer:"9 litres", options:["9 litres","6 litres","15 litres","21 litres"], why:"Air used = start amount − amount left = 15 − 6 = 9 litres." },
+    { q:"Daily maximum wind speeds (knots) for one week were: 31, 33, 41, 41, 42, 57, 60. What is the range?", answer:"29 knots", options:["29 knots","60 knots","31 knots","26 knots"], why:"Range = largest − smallest = 60 − 31 = 29 knots." },
+    { q:"Callum plots one week of wind speeds and says his line graph is a good model for predicting wind speed for the next few months. Why is he wrong?", answer:"One week of data cannot predict months ahead", options:["One week of data cannot predict months ahead","He should have used a pie chart","Wind speed cannot be plotted on a graph","The line should be curved, not straight"], why:"Weather changes all the time — a pattern from just one week tells you very little about the months to come." },
+    { q:"On a graph axis, what does a zig-zag (break symbol) near the origin mean?", answer:"There is a break in the axis scale", options:["There is a break in the axis scale","The data is unreliable","The graph is finished","The values are negative"], why:"The zig-zag shows the scale does not start at 0 — part of the axis has been missed out." },
+    { q:"Mean monthly temperatures in Canberra, Australia (°C), from January to December: 20, 21, 17, 13, 9, 6, 5, 7, 9, 12, 15, 18. Which are the three coldest months?", answer:"June, July and August", options:["June, July and August","December, January and February","March, April and May","September, October and November"], why:"The lowest values are 6 (Jun), 5 (Jul) and 7 (Aug). Canberra is in the southern hemisphere, so its winter is in the middle of the year." },
+    { q:"Two line graphs are compared: one has a vertical axis from 0 to 5, the other from 30 to 40. Why might comparing the two lines be misleading?", answer:"The vertical scales are different", options:["The vertical scales are different","The graphs use different colours","Line graphs cannot be compared","The horizontal axes show time"], why:"Different vertical scales make changes look bigger or smaller than they really are. To compare fairly, both graphs need the same scale." },
+    { q:"A bar chart's vertical axis is labelled 0, 10, 20, 30 and then jumps straight to 80. Why is this misleading?", answer:"The scale is not evenly spaced", options:["The scale is not evenly spaced","The axis should be horizontal","There are too many labels","Bar charts never use numbers"], why:"An axis scale must go up in equal steps. Jumping from 30 to 80 squashes the top of the chart and distorts how the bars compare." },
+    { q:"Mean monthly temperatures in London (°C): 10, 4, 4, 6, 8, 12, 15, 17, 17, 14, 10, 7. What is the range?", answer:"13 °C", options:["13 °C","17 °C","4 °C","21 °C"], why:"Range = highest − lowest = 17 − 4 = 13 °C." },
+    { q:"What is a line graph best for showing?", answer:"How data changes over time", options:["How data changes over time","The proportions of a whole","The most common value","Data in alphabetical order"], why:"Line graphs show trends over time — and they can even be used to predict future outcomes." }
+  ]
+};
+</script>
+<script src="quiz.js"></script>
+</body>
+</html>
