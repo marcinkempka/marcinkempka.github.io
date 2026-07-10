@@ -103,20 +103,22 @@
         add("text",{x:L-8,y:y+4,"text-anchor":"end","class":"tick"},String(v));
       }
       var slot=iw/labels.length;
+      // line graphs start on the y-axis (textbook style); bar charts are centred in slots
+      function xPix(i){return c.type==="bar"?(L+slot*i+slot/2):(L+(i/(labels.length-1))*(iw-14));}
       if(c.type==="bar"){
         var bw=slot*0.6;
         vals.forEach(function(val,i){
           add("rect",{x:L+slot*i+(slot-bw)/2,y:yPix(val),width:bw,height:(T+ih-yPix(val)),rx:3,"class":"barfill"});
         });
       }else{
-        var pts=vals.map(function(val,i){return (L+slot*i+slot/2)+","+yPix(val);}).join(" ");
+        var pts=vals.map(function(val,i){return xPix(i)+","+yPix(val);}).join(" ");
         add("polyline",{points:pts,"class":"lineplot"});
         vals.forEach(function(val,i){
-          add("circle",{cx:L+slot*i+slot/2,cy:yPix(val),r:4,"class":"dot"});
+          add("circle",{cx:xPix(i),cy:yPix(val),r:4,"class":"dot"});
         });
       }
       labels.forEach(function(lb,i){
-        add("text",{x:L+slot*i+slot/2,y:T+ih+18,"text-anchor":"middle","class":"tick"},lb);
+        add("text",{x:xPix(i),y:T+ih+18,"text-anchor":"middle","class":"tick"},lb);
       });
       if(c.xLabel)add("text",{x:L+iw/2,y:H-8,"text-anchor":"middle","class":"axis"},c.xLabel);
       if(c.yLabel)add("text",{x:14,y:T+ih/2,"text-anchor":"middle","class":"axis",transform:"rotate(-90 14 "+(T+ih/2)+")"},c.yLabel);
